@@ -24,8 +24,14 @@ export default class Index extends Component {
           value={this.state.value}
           onInput={(e) => {
             let val = e.detail.value;
+            // @ts-ignore
+            let inputRef = e.target.children[0];
             val = val.length > 3 ? val.substring(0, 3) : val;
             this.setState({ value: val });
+            if (inputRef) {
+              console.log(22222);
+              inputRef.value = val;
+            }
             return val;
           }}
         ></Input>
